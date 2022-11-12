@@ -1,0 +1,72 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Cat Adotion API",
+        "description": "This is a simple API for helping adopt cats",
+        "version": "0.1.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3000"
+        }
+    ],
+    "paths": {
+        "/cats": {
+            "post": {
+                "summary": "adds a cat",
+                "description": "adds a single cat",
+                "operationId": "addCat",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Cat"
+                            },
+                            "example": {
+                                "cat": {
+                                    "name": "Daisy",
+                                    "id": 1,
+                                    "eyeColour": "green"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Cat": {
+                "type": "object",
+                "required": [
+                    "name",
+                    "eyeColour",
+                    "id"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "eyeColour": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
